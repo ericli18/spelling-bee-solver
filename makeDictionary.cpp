@@ -26,77 +26,9 @@ bool findWord(string s, trieNode *root){
     return temp->isEnd;
 }
 
-// string serialize_trie(trieNode* root) {
-//     string result = "";
-//     for (int i = 0; i < 26; i++) {
-//         if (root->child[i] != nullptr) {
-//             result += char(i + 'a');
-//             result += serialize_trie(root->child[i]);
-//         }
-//     }
-//     result += root->isEnd ? '$' : '#';
-//     return result;
-// }
-
-// void serialize(trieNode* root, string filename) {
-//     ofstream file(filename);
-//     if (file.is_open()) {
-//         string trie_str = serialize_trie(root);
-//         file.write(trie_str.c_str(), trie_str.length());
-//         file.close();
-//     }
-// }
-
-//serialize trie to file
-// void serialize(trieNode* root, string filename) {
-//     ofstream file(filename);
-//     if (file.is_open()) {
-//         queue<trieNode*> q;
-//         q.push(root);
-//         while (!q.empty()) {
-//             trieNode* current = q.front();
-//             q.pop();
-//             for (int i = 0; i < 26; i++) {
-//                 if (current->child[i] != nullptr) {
-//                     file << char(i + 'a');
-//                     q.push(current->child[i]);
-//                 }
-//             }
-//             file << (current->isEnd ? '$' : '#');
-//         }
-//         file.close();
-//     }
-// }
-
-// string constructWords(vector<char> &validLetters, trieNode* root)
-// {
-//     string result = "";
-
-//     stack<trieNode*> q;
-//     string running = "";
-//     q.push(root);
-//     unordered_map<trieNode*, bool> visited();
-//     while(!q.empty())
-//     {
-//         trieNode* curr = q.top();
-//         bool finished = true;
-//         for(auto x : validLetters)
-//         {
-//             if(curr -> child[x-'a'] != nullptr && )
-//             {
-//                 finished = false;
-//                 running += to_string(x);
-//                 q.push(curr -> child[x-'a'])
-//             }
-//         }
-//     }
-// }
-
+//Display and search through treeNodes
 void display(trieNode* root, char str[], int level, vector<char>& allowed, char necessary)
 {
-    // If node is leaf node, it indicates end
-    // of string, so a null character is added
-    // and string is displayed
     if (root -> isEnd) 
     {
 
@@ -107,10 +39,6 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
   
     for(auto i : allowed) 
     {
-        // if NON NULL child is found
-        // add parent key to str and
-        // call the display function recursively
-        // for child node
         if (root->child[i - 'a']) 
         {
             str[level] = i;
