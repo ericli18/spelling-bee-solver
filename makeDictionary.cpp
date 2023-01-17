@@ -97,7 +97,7 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
     // If node is leaf node, it indicates end
     // of string, so a null character is added
     // and string is displayed
-    if (!root -> isEnd) 
+    if (root -> isEnd) 
     {
 
         str[level] = '\0';
@@ -114,7 +114,7 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
         if (root->child[i - 'a']) 
         {
             str[level] = i;
-            display(root->child[i - 'a'], str, level + 1, allowed, 'i');
+            display(root->child[i - 'a'], str, level + 1, allowed, necessary);
         }
     }
 }
@@ -140,10 +140,10 @@ int main(){
     cout << findWord("hello", root) << endl;
 
 
-    vector<char> allowed = {'g', 'e', 'i', 'l', 'a', 'y', 't'};
+    vector<char> allowed = {'n', 'a', 'h', 'i', 'd', 'c', 'r'};
     int level = 0;
-    char str[20];
-    display(root, str, level, allowed, 'i');
+    char str[30];
+    display(root, str, level, allowed, 'r');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
