@@ -10,11 +10,7 @@ struct trieNode{
 };
 
 void setio(string s) {
-
 	freopen((s + ".txt").c_str(), "r", stdin);
-
-	//freopen((s + ".out").c_str(), "w", stdout);
-
 }
 
 bool findWord(string s, trieNode *root){
@@ -27,6 +23,27 @@ bool findWord(string s, trieNode *root){
         temp = temp->child[index];
     }
     return temp->isEnd;
+}
+
+string serialize_trie(trieNode* root) {
+    string result = "";
+    for (int i = 0; i < 26; i++) {
+        if (root->child[i] != nullptr) {
+            result += char(i + 'a');
+            result += serialize_trie(root->child[i]);
+        }
+    }
+    result += root->isEnd ? '$' : '#';
+    return result;
+}
+
+void serialize(trieNode* root, string filename) {
+    ofstream file(filename);
+    if (file.is_open()) {
+        string trie_str = serialize_trie(root);
+        file.write(trie_str.c_str(), trie_str.length());
+        file.close();
+    }
 }
 
 int main(){
@@ -47,6 +64,7 @@ int main(){
     }
 
     cout << findWord("hello", root) << endl;
+    serialize(root, "dictionary.txt");
     return 0;
 }
 
