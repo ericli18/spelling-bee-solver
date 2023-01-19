@@ -68,23 +68,60 @@ bool findWord(string s, trieNode *root){
 //     }
 // }
 
-string constructWords(vector<char> &validLetters, trieNode* root)
-{
-    string result = "";
+// string constructWords(vector<char> &validLetters, trieNode* root)
+// {
+//     string result = "";
 
-    queue<trieNode*> q;
-    string curr = "";
-    q.push(root);
-    while(!q.empty())
+//     stack<trieNode*> q;
+//     string running = "";
+//     q.push(root);
+//     unordered_map<trieNode*, bool> visited();
+//     while(!q.empty())
+//     {
+//         trieNode* curr = q.top();
+//         bool finished = true;
+//         for(auto x : validLetters)
+//         {
+//             if(curr -> child[x-'a'] != nullptr && )
+//             {
+//                 finished = false;
+//                 running += to_string(x);
+//                 q.push(curr -> child[x-'a'])
+//             }
+//         }
+//     }
+// }
+
+void display(trieNode* root, char str[], int level, vector<char>& allowed, char necessary)
+{
+    // If node is leaf node, it indicates end
+    // of string, so a null character is added
+    // and string is displayed
+    if (!root -> isEnd) 
     {
-        
+
+        str[level] = '\0';
+        if(!(level < 4) && strchr(str, necessary) != nullptr)
+            cout << str << endl;
+    }
+  
+    for(auto i : allowed) 
+    {
+        // if NON NULL child is found
+        // add parent key to str and
+        // call the display function recursively
+        // for child node
+        if (root->child[i - 'a']) 
+        {
+            str[level] = i;
+            display(root->child[i - 'a'], str, level + 1, allowed, 'i');
+        }
     }
 }
 
 
-
 int main(){
-    setio("words_alpha");
+    setio("popular");
     trieNode *root = new trieNode();
     string s;
     while(cin>>s){
@@ -101,6 +138,12 @@ int main(){
     }
 
     cout << findWord("hello", root) << endl;
+
+
+    vector<char> allowed = {'g', 'e', 'i', 'l', 'a', 'y', 't'};
+    int level = 0;
+    char str[20];
+    display(root, str, level, allowed, 'i');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
