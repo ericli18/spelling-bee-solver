@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 struct trieNode{
 
     trieNode *child[26];
@@ -25,26 +26,62 @@ bool findWord(string s, trieNode *root){
     return temp->isEnd;
 }
 
-string serialize_trie(trieNode* root) {
+// string serialize_trie(trieNode* root) {
+//     string result = "";
+//     for (int i = 0; i < 26; i++) {
+//         if (root->child[i] != nullptr) {
+//             result += char(i + 'a');
+//             result += serialize_trie(root->child[i]);
+//         }
+//     }
+//     result += root->isEnd ? '$' : '#';
+//     return result;
+// }
+
+// void serialize(trieNode* root, string filename) {
+//     ofstream file(filename);
+//     if (file.is_open()) {
+//         string trie_str = serialize_trie(root);
+//         file.write(trie_str.c_str(), trie_str.length());
+//         file.close();
+//     }
+// }
+
+//serialize trie to file
+// void serialize(trieNode* root, string filename) {
+//     ofstream file(filename);
+//     if (file.is_open()) {
+//         queue<trieNode*> q;
+//         q.push(root);
+//         while (!q.empty()) {
+//             trieNode* current = q.front();
+//             q.pop();
+//             for (int i = 0; i < 26; i++) {
+//                 if (current->child[i] != nullptr) {
+//                     file << char(i + 'a');
+//                     q.push(current->child[i]);
+//                 }
+//             }
+//             file << (current->isEnd ? '$' : '#');
+//         }
+//         file.close();
+//     }
+// }
+
+string constructWords(vector<char> &validLetters, trieNode* root)
+{
     string result = "";
-    for (int i = 0; i < 26; i++) {
-        if (root->child[i] != nullptr) {
-            result += char(i + 'a');
-            result += serialize_trie(root->child[i]);
-        }
+
+    queue<trieNode*> q;
+    string curr = "";
+    q.push(root);
+    while(!q.empty())
+    {
+        
     }
-    result += root->isEnd ? '$' : '#';
-    return result;
 }
 
-void serialize(trieNode* root, string filename) {
-    ofstream file(filename);
-    if (file.is_open()) {
-        string trie_str = serialize_trie(root);
-        file.write(trie_str.c_str(), trie_str.length());
-        file.close();
-    }
-}
+
 
 int main(){
     setio("words_alpha");
@@ -64,7 +101,10 @@ int main(){
     }
 
     cout << findWord("hello", root) << endl;
-    serialize(root, "dictionary.txt");
+    // serialize(root, "dictionary2.txt");
     return 0;
 }
+
+
+
 
