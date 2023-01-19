@@ -1,0 +1,1 @@
+{"name":"Local: makeDictionary","url":"/home/draydere/repos/spelling-bee-solver/makeDictionary.cpp","tests":[{"id":1674089783456,"input":"asdf","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/draydere/repos/spelling-bee-solver/makeDictionary.cpp","group":"local","local":true}

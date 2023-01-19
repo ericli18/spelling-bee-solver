@@ -35,6 +35,7 @@ int main(){
     string s;
     while(cin>>s){
         trieNode *temp = root;
+        if(s.length()<=3) continue;
         for(int i=0;i<s.length();i++){
             int index = s[i]-'a';
             if(temp->child[index]==NULL){
