@@ -107,21 +107,17 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
   
     for(auto i : allowed) 
     {
-        // if NON NULL child is found
-        // add parent key to str and
-        // call the display function recursively
-        // for child node
         if (root->child[i - 'a']) 
         {
             str[level] = i;
-            display(root->child[i - 'a'], str, level + 1, allowed, necessary);
+            display(root->child[i - 'a'], str, level + 1, allowed, 'i');
         }
     }
 }
 
 
 int main(){
-    setio("popular");
+    setio("words_alpha");
     trieNode *root = new trieNode();
     string s;
     while(cin>>s){
@@ -137,13 +133,13 @@ int main(){
         temp->isEnd = true;
     }
 
-    cout << findWord("hello", root) << endl;
+    cout << findWord("agility", root) << endl;
+// it doesn't find agility sooooo it needs some improvements
 
-
-    vector<char> allowed = {'n', 'a', 'h', 'i', 'd', 'c', 'r'};
+    vector<char> allowed = {'g', 'e', 'i', 'l', 'a', 'y', 't'};
     int level = 0;
     char str[30];
-    display(root, str, level, allowed, 'r');
+    display(root, str, level, allowed, 'i');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
