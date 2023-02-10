@@ -68,10 +68,10 @@ int main(){
     cout << findWord("hello", root) << endl;
 
 
-    vector<char> allowed = {'n', 'a', 'h', 'i', 'd', 'c', 'r'};
+    vector<char> allowed = {'k', 'l', 't', 'i', 'v', 'a', 'e'};
     int level = 0;
     char str[30];
-    display(root, str, level, allowed, 'r');
+    display(root, str, level, allowed, 'e');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
