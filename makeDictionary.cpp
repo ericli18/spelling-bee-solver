@@ -42,14 +42,14 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
         if (root->child[i - 'a']) 
         {
             str[level] = i;
-            display(root->child[i - 'a'], str, level + 1, allowed, necessary);
+            display(root->child[i - 'a'], str, level + 1, allowed, 'i');
         }
     }
 }
 
 
 int main(){
-    setio("popular");
+    setio("words_alpha");
     trieNode *root = new trieNode();
     string s;
     while(cin>>s){
@@ -65,13 +65,13 @@ int main(){
         temp->isEnd = true;
     }
 
-    cout << findWord("hello", root) << endl;
+    cout << findWord("agility", root) << endl;
+// it doesn't find agility sooooo it needs some improvements
 
-
-    vector<char> allowed = {'k', 'l', 't', 'i', 'v', 'a', 'e'};
+    vector<char> allowed = {'g', 'e', 'i', 'l', 'a', 'y', 't'};
     int level = 0;
     char str[30];
-    display(root, str, level, allowed, 'e');
+    display(root, str, level, allowed, 'i');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
