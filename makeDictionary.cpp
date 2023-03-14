@@ -42,7 +42,7 @@ void display(trieNode* root, char str[], int level, vector<char>& allowed, char 
         if (root->child[i - 'a']) 
         {
             str[level] = i;
-            display(root->child[i - 'a'], str, level + 1, allowed, 'i');
+            display(root->child[i - 'a'], str, level + 1, allowed, necessary);
         }
     }
 }
@@ -68,10 +68,10 @@ int main(){
     cout << findWord("agility", root) << endl;
 // it doesn't find agility sooooo it needs some improvements
 
-    vector<char> allowed = {'g', 'e', 'i', 'l', 'a', 'y', 't'};
+    vector<char> allowed = {'e', 'l', 'x', 'f', 'o', 'i', 'n'};
     int level = 0;
     char str[30];
-    display(root, str, level, allowed, 'i');
+    display(root, str, level, allowed, 'n');
     // serialize(root, "dictionary2.txt");
     return 0;
 }
